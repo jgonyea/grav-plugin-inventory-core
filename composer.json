@@ -1,0 +1,29 @@
+{
+  "name": "jgonyea/inventory-core",
+  "type": "grav-plugin",
+  "description": "Provides the core functionality for the Inventory project",
+  "keywords": ["plugin"],
+  "homepage": "https://github.com/jgonyea/grav-plugin-inventory-core",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Jeremy Gonyea",
+      "email": "jeremy.gonyea@gmail.com",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": ">=7.1.3"
+  },
+  "autoload": {
+    "psr-4": {
+      "Grav\\Plugin\\InventoryCore\\": "classes/"
+    },
+    "classmap":  ["inventory-core.php"]
+  },
+  "config": {
+    "platform": {
+      "php": "7.1.3"
+    }
+  }
+}

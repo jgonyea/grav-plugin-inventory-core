@@ -1,0 +1,35 @@
+name: Inventory Core
+slug: inventory-core
+type: plugin
+version: 0.1.0
+description: Provides the core functionality for the Inventory project
+icon: laptop
+author:
+  name: Jeremy Gonyea
+  email: jeremy.gonyea@gmail.com
+homepage: https://github.com/jgonyea/grav-plugin-inventory-core
+demo: http://demo.yoursite.com
+keywords: grav, plugin, asset, inventory
+bugs: https://github.com/jgonyea/grav-plugin-inventory-core/issues
+docs: https://github.com/jgonyea/grav-plugin-inventory-core/blob/develop/README.md
+license: MIT
+
+dependencies:
+  - { name: grav, version: '>=1.6.0' }
+  - admin
+  - stamp
+
+
+form:
+  validation: loose
+  fields:
+    enabled:
+      type: toggle
+      label: PLUGIN_ADMIN.PLUGIN_STATUS
+      highlight: 1
+      default: 0
+      options:
+        1: PLUGIN_ADMIN.ENABLED
+        0: PLUGIN_ADMIN.DISABLED
+      validate:
+        type: bool
