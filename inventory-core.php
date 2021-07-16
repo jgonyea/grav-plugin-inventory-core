@@ -2,7 +2,9 @@
 namespace Grav\Plugin;
 
 use Composer\Autoload\ClassLoader;
+use Grav\Common\Grav;
 use Grav\Common\Plugin;
+use RocketTheme\Toolbox\Event\Event;
 
 /**
  * Class InventoryCorePlugin
@@ -10,6 +12,11 @@ use Grav\Common\Plugin;
  */
 class InventoryCorePlugin extends Plugin
 {
+    public $features = [
+        'blueprints' => 0, // Use priority 0
+    ];
+
+    
     /**
      * @return array
      *
@@ -24,8 +31,6 @@ class InventoryCorePlugin extends Plugin
     {
         return [
             'onPluginsInitialized' => [
-                // Uncomment following line when plugin requires Grav < 1.7
-                // ['autoload', 100000],
                 ['onPluginsInitialized', 0]
             ]
         ];
@@ -48,6 +53,9 @@ class InventoryCorePlugin extends Plugin
     {
         // Don't proceed if we are in the admin plugin
         if ($this->isAdmin()) {
+            $this->enable([
+                'onGetPageTemplates' => ['onGetPageTemplates', 0],
+            ]);
             return;
         }
 
@@ -56,4 +64,33 @@ class InventoryCorePlugin extends Plugin
             // Put your main events here
         ]);
     }
+
+
+    /**
+     * Add blueprint directory to page templates.
+     */
+    public function onGetPageTemplates(Event $event)
+    {
+        $types = $event->types;
+        $locator = Grav::instance()['locator'];
+        $types->scanBlueprints($locator->findResource('plugin://' . $this->name . '/blueprints'));
+        $types->scanTemplates($locator->findResource('plugin://' . $this->name . '/templates'));
+    }
+
+  /**
+   * Returns listing of users.
+   *
+   * @return array
+   */
+    public static function getInventoryUsers()
+    {
+        $options_array = [
+            "Option 1" => "Option 1",
+        ];
+        $users = Grav::instance()['users'];
+        $inventory_users = $users->find('inventoryAdmin', 'group');
+        return $options_array;
+    }
+
+
 }

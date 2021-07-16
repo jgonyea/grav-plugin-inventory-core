@@ -1,0 +1,61 @@
+title: Software
+'@extends':
+    type: default
+    context: blueprints://pages
+
+form:
+  fields:
+    tabs:
+      type: tabs
+      active: 1
+      fields:
+        content:
+          type: tab
+          ordering@: 0
+          title: PLUGIN_INVENTORY.ADMIN.CONTENT.TAB_TITLE
+          fields:
+            header.title:
+              type: text
+              label: PLUGIN_INVENTORY.ADMIN.CONTENT.SOFTWARE.CONTENT_TITLE
+              ordering@: 1
+            header.software.key:
+              type: textarea
+              label: PLUGIN_INVENTORY.ADMIN.CONTENT.SOFTWARE.LICENSE_KEY
+              ordering@: 3
+              rows: 5
+        
+        purchase:
+          type: tab
+          ordering@: 1
+          title: PLUGIN_INVENTORY.ADMIN.PURCHASE.TAB_TITLE
+          fields:
+            header.purchase.status:
+              type: select_optgroup
+              label: PLUGIN_INVENTORY.ADMIN.PURCHASE.STATUS
+              options:
+                - Select a Status:
+                  - Current
+                  - Expired
+            header.purchase.date:
+              type: date
+              label: PLUGIN_INVENTORY.ADMIN.PURCHASE.PURCHASE_DATE
+            header.expiration.date:
+              type: date
+              label: PLUGIN_INVENTORY.ADMIN.PURCHASE.EXPIRATION_DATE
+            header.purchase.details:
+              type: text
+              label: PLUGIN_INVENTORY.ADMIN.PURCHASE.PURCHASE_DETAILS
+        
+        people:
+          type: tab
+          ordering@: 2
+          title: PLUGIN_INVENTORY.ADMIN.PEOPLE.TAB_TITLE
+          fields:
+            header.people.created:
+              type: select
+              label: PLUGIN_INVENTORY.ADMIN.PEOPLE.CREATED_BY
+              data-options@: '\Grav\Plugin\InventoryPlugin::getInventoryUsers'
+            header.people.assigned:
+              type: select
+              label: PLUGIN_INVENTORY.ADMIN.PEOPLE.ASSIGNED_TO
+              data-options@: '\Grav\Plugin\InventoryPlugin::getInventoryUsers'

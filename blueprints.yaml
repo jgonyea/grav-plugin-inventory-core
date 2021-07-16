@@ -2,7 +2,7 @@ name: Inventory Core
 slug: inventory-core
 type: plugin
 version: 0.1.0
-description: Provides the core functionality for the Inventory project
+description: Provides the core website functionality for the Inventory project
 icon: laptop
 author:
   name: Jeremy Gonyea
@@ -17,8 +17,9 @@ license: MIT
 dependencies:
   - { name: grav, version: '>=1.6.0' }
   - admin
+  - admin-addon-revisions
+  - feed
   - stamp
-
 
 form:
   validation: loose

@@ -1,0 +1,19 @@
+title: Asset
+'@extends':
+    type: default
+    context: blueprints://pages
+
+form:
+  fields:
+    tabs:
+      type: tabs
+      active: 1
+      fields:
+        content:
+          type: tab
+          ordering@: 0
+          title: PLUGIN_INVENTORY.ADMIN.CONTENT.TAB_TITLE
+          fields:
+            header.title:
+              type: text
+              label: PLUGIN_INVENTORY.ADMIN.CONTENT.ASSET_TITLE
